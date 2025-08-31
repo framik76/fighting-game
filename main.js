@@ -1,8 +1,9 @@
 kaboom({
-    width: 1280,
-    height: 720,
-    scale: 0.7,
-    debug: false
+    width: window.innerWidth,
+    height: window.innerHeight,
+    scale: 1,
+    debug: false,
+    fullscreen: true
 })
 
 loadSprite("background", "assets/background/background_layer_1.png")
@@ -78,11 +79,11 @@ loadSprite("death-player2", "assets/death-player2.png", {
 scene("fight", () => {
     const background = add([
         sprite("background"),
-        scale(4)
+        scale(5)
     ])
 
     background.add([
-        sprite("trees"),
+        sprite("trees")
     ])
 
     const groundTiles = addLevel([
@@ -112,7 +113,7 @@ scene("fight", () => {
         }
     })
     
-    groundTiles.use(scale(4))
+    groundTiles.use(scale(5))
 
     const shop = background.add([
         sprite("shop"),
@@ -122,8 +123,8 @@ scene("fight", () => {
     shop.play("default")
 
    // left invisible wall
-   add([
-    rect(16, 720),
+    add([
+    rect(16, window.innerHeight),
     area(),
     body({isStatic: true}),
     pos(-20,0)
@@ -131,10 +132,10 @@ scene("fight", () => {
 
    // right invisible wall
    add([
-    rect(16, 720),
+    rect(16, window.innerHeight),
     area(),
     body({isStatic: true}),
-    pos(1280,0)
+    pos(window.innerWidth,0)
    ])
 
    background.add([
@@ -284,11 +285,11 @@ scene("fight", () => {
         }
     }
 
-    onKeyPress("space", () => {
+    onKeyPress("z", () => {
         attack(player1, ["a", "d", "w"])
     })
 
-    onKeyRelease("space", () => {
+    onKeyRelease("z", () => {
         destroyAll(player1.id + "attackHitbox")
     })
 
@@ -349,7 +350,7 @@ scene("fight", () => {
         if (gameOver) return;
 
         if (player1.health > 0) {
-            player1.health -= 5;
+            player1.health -= 1;
             tween(player1HealthBar.width, player1.health, 1, (val) => {
                 player1HealthBar.width = val;
             }, easings.easeOutSine);
@@ -483,7 +484,7 @@ scene("fight", () => {
         }
         
         if (player2.health !== 0) {
-            player2.health -= 50 
+            //player2.health -= 50
             tween(player2HealthBar.width, player2.health, 1, (val) => {
                 player2HealthBar.width = val
             }, easings.easeOutSine) 
