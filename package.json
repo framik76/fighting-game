@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildWin": "npx electron-packager . FightingGame --platform=win32 --arch=x64 --out=dist --overwrite",
+    "buildMac": "npx electron-packager . FightingGame --platform=darwin --arch=x64 --out=dist --overwrite",
+    "buildLinux": "npx electron-packager . FightingGame --platform=linux --arch=x64 --out=dist --overwrite"
   },
   "private": true,
   "devDependencies": {

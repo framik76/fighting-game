@@ -79,7 +79,7 @@ loadSprite("death-player2", "assets/death-player2.png", {
 scene("fight", () => {
     const background = add([
         sprite("background"),
-        scale(5)
+        scale(6)
     ])
 
     background.add([
@@ -113,7 +113,7 @@ scene("fight", () => {
         }
     })
     
-    groundTiles.use(scale(5))
+    groundTiles.use(scale(6))
 
     const shop = background.add([
         sprite("shop"),
